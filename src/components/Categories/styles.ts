@@ -1,0 +1,26 @@
+import { Platform } from "react-native";
+import styled from "styled-components/native";
+
+const isAndroid = Platform.OS === "android";
+
+type ButtonProps = {
+  active: boolean;
+};
+
+export const Category = styled.TouchableOpacity<ButtonProps>`
+  align-items: center;
+  margin-left: 24px;
+  opacity: ${(props) => (props.active ? 1 : 0.5)};
+`;
+
+export const Icon = styled.View`
+  background-color: #fff;
+  width: 44px;
+  height: 44px;
+  border-radius: 22px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 8px;
+  box-shadow: 0px 2px 1px rgba(0, 0, 0, ${isAndroid ? 1 : 0.1});
+  elevation: 3;
+`;
