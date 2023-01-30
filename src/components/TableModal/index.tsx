@@ -19,6 +19,7 @@ export const TableModal = ({ visible, onClose, onSave }: Props) => {
   const handleSave = () => {
     onSave(table);
     onClose();
+    setTable("");
   };
 
   return (
