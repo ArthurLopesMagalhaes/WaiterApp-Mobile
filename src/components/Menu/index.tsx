@@ -14,7 +14,12 @@ import {
   AddToCartButton,
 } from "./styles";
 
-export const Menu = () => {
+type MenuProps = {
+  onAddToCart: (product: Product) => void;
+  products: Product[];
+};
+
+export const Menu = ({ onAddToCart, products }: MenuProps) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
 
@@ -47,7 +52,7 @@ export const Menu = () => {
                 {formatCurrency(item.price)}
               </Text>
             </ProductDetails>
-            <AddToCartButton>
+            <AddToCartButton onPress={() => onAddToCart(item)}>
               <PlusCircle />
             </AddToCartButton>
           </ProductContainer>
@@ -57,6 +62,7 @@ export const Menu = () => {
         visible={isModalVisible}
         onClose={() => setIsModalVisible(false)}
         product={selectedProduct}
+        onAddToCart={onAddToCart}
       />
     </>
   );
